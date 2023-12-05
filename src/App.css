@@ -1,0 +1,77 @@
+body {
+    overflow-y: hidden;
+}
+
+/*----------profile------------*/
+#profile {
+    background-color: #BE9AA0B5;
+    width:18%;
+}
+
+/*-----scroll-style------*/
+
+#profile::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+   #profile::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 4px;
+  }
+  
+  #profile::-webkit-scrollbar-thumb:active {
+    background-color: #636363;
+  }
+  
+  #profile::-webkit-scrollbar-thumb:hover {
+    background: #636363;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+  
+   #profile::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+  }
+  
+  #profile::-webkit-scrollbar-track:hover, 
+  #profile::-webkit-scrollbar-track:active {
+    background: #d4d4d4;
+  }
+
+.profile-img {
+    clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+    background-color: #FCCB90;
+    overflow: visible;
+}
+
+
+
+.profile-img svg {
+    background-image: url(https://s6.uupload.ir/files/your_image_here👈_22nl.png);
+    background-size: cover;
+}
+
+.commands-container .active {
+    background-color: #bf9fa4b5;
+}
+.project-container button{
+    background-color: #bf9fa4b5;
+}
+/*----------users---------------*/
+
+#users {
+    background-color: #393244;
+    width: 82%;
+}
+
+#users .users {
+    background-color: #403E51;
+}
+
+
+/*----------tasks---------------*/
+
+#tasks {
+    background-color: #2A4C75;
+}
+
