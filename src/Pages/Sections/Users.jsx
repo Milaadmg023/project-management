@@ -38,6 +38,10 @@ const Users = () => {
  
   const handleOpen = () => setOpen(!open);
 
+  const deleteHandler =()=>{
+    console.log("deleted");
+  }
+
   return (
     <>
       <section>
@@ -80,7 +84,7 @@ const Users = () => {
                       </SpeedDialHandler>
                       <SpeedDialContent>
                         <SpeedDialAction className="m-[1px]">
-                          <FaTrash size={15} className="text-gray-800" />
+                          <FaTrash size={15} className="text-gray-800" onClick={deleteHandler}/>
                         </SpeedDialAction>
                         <SpeedDialAction className="m-[1px]">
                           <FaCommentAlt onClick={handleOpen} variant="gradient" size={15} className="text-gray-800" />
