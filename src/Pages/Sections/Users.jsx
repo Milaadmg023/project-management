@@ -8,13 +8,7 @@ import {
   SpeedDialHandler,
   SpeedDialContent,
   SpeedDialAction,
-  Button,
   Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-  Input,
-  Textarea
 } from "@material-tailwind/react";
 import {
   FaTrash,
@@ -26,6 +20,8 @@ import { GoPlus } from "react-icons/go";
 import Tasks from "./Tasks";
 import './Users/users-style.css'
 import { Message } from "./Users/Message";
+import DeleteBtn from "./Users/DeleteBtn.jsx";
+import UserContext from "../../Context/usersContext.jsx";
 
 
 
@@ -34,12 +30,17 @@ const Users = () => {
   const ShowHandler = (userId) => {
     setId(userId)
   };
-  const [open, setOpen] = React.useState(false);
+
+  const {deleteStatus , setDeleteStatus} = React.useContext(UserContext)
+
+  const [chatOpen, setChatOpen] = React.useState(false);
  
-  const handleOpen = () => setOpen(!open);
+  const handleOpen = () =>{
+    setChatOpen(!chatOpen);
+  } 
 
   const deleteHandler =()=>{
-    console.log("deleted");
+    setDeleteStatus(!deleteStatus)
   }
 
   return (
@@ -84,7 +85,7 @@ const Users = () => {
                       </SpeedDialHandler>
                       <SpeedDialContent>
                         <SpeedDialAction className="m-[1px]">
-                          <FaTrash size={15} className="text-gray-800" onClick={deleteHandler}/>
+                          <FaTrash size={15} className="text-gray-800" onClick={()=>deleteHandler(data.id)}/>
                         </SpeedDialAction>
                         <SpeedDialAction className="m-[1px]">
                           <FaCommentAlt onClick={handleOpen} variant="gradient" size={15} className="text-gray-800" />
@@ -109,9 +110,12 @@ const Users = () => {
       </section>
       <Tasks id={id}/>
       
-      <Dialog open={open} handler={handleOpen} className="chat-page w-[25%] mx-auto rounded-[10px] border border-gray-900 p-2 mt-10" >
+      <Dialog open={chatOpen} handler={handleOpen} className="chat-page w-[25%] mx-auto rounded-[10px] border border-gray-900 p-2 mt-10" >
         <div className="main border rounded-[29px] mb-2 h-[20rem]"></div>
         <Message/>
+      </Dialog>
+      <Dialog open={deleteStatus} handler={deleteHandler} className="w-auto  rounded-[30px] mx-auto mt-10">
+        <DeleteBtn/>
       </Dialog>
     </>
   );

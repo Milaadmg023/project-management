@@ -9,7 +9,6 @@ const Tasks = (props) => {
   return (
     <div id="tasks" >
       {filteredMembers.map((member) => {
-        console.log(member);
         return (
           <div className="grid-rows-2 text-white">
             <div className="info-container flex justify-between p-6">
