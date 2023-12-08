@@ -1,3 +1,7 @@
+This is a social network for managing tasks and projects that uses React JS. Also, in this project, tools such as Tailwind CSS and Material Tailwind have been used
+-------------
+! Other parts will be completed soon :)
+-----
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
