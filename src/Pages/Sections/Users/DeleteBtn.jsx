@@ -13,7 +13,7 @@ const DeleteBtn = () => {
   return (
     <div className="card">
       <div className="card-content">
-        <p className="card-heading">Delete file?</p>
+        <p className="card-heading">Delete User?</p>
         <p className="card-description">
           Lorem ipsum dolor sit amet, consectetur adi
         </p>
