@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: 16.x
       - run: npm install
-      - run: npm run build
+      - run: npm run dev
 
   lint:
     runs-on: ubuntu-latest
