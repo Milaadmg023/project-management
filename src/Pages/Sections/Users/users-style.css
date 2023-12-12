@@ -8,38 +8,6 @@ section {
   background-color: #2a4c75;
 }
 
-.chat-page {
-  background: #4b6cb7; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #182848,
-    #4b6cb7
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #182848,
-    #4b6cb7
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-.chat-page .main {
-  background: #9b9bcd; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #c8ebe8,
-    #b1c4e7,
-    #9c9cd8
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #b4ebe7,
-    #acc1e8,
-    #9494d7
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-/*-----delete btn-----*/
-
 .card {
   width: 300px;
   height: fit-content;
