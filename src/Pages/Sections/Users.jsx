@@ -34,6 +34,15 @@ const Users = () => {
   const {deleteStatus , setDeleteStatus} = React.useContext(UserContext)
 
   const [chatOpen, setChatOpen] = React.useState(false);
+
+  const [saveAlert, setSaveAlert] = React.useState(false);
+
+  const BookmarkHandler =()=>{
+    setSaveAlert(!saveAlert)
+    setTimeout(()=>{
+      setSaveAlert(!saveAlert)
+    }, 2000)
+  } 
  
   const handleOpen = () =>{
     setChatOpen(!chatOpen);
@@ -79,7 +88,7 @@ const Users = () => {
                   <div>
                     <SpeedDial placement="right">
                       <SpeedDialHandler>
-                        <IconButton className="rounded-full bg-gray-600 p-1">
+                        <IconButton className="rounded-full bg-gray-600 mx-1 p-1">
                           <GoPlus className="h-5 w-5 transition-transform group-hover:rotate-45" />
                         </IconButton>
                       </SpeedDialHandler>
@@ -97,7 +106,7 @@ const Users = () => {
                           />
                         </SpeedDialAction>
                         <SpeedDialAction className="m-[1px]">
-                          <FaBookmark size={15} className="text-gray-800" />
+                          <FaBookmark size={15} className="text-gray-800" onClick={BookmarkHandler}/>
                         </SpeedDialAction>
                       </SpeedDialContent>
                     </SpeedDial>
@@ -116,6 +125,9 @@ const Users = () => {
       </Dialog>
       <Dialog open={deleteStatus} handler={deleteHandler} className="w-auto  rounded-[30px] mx-auto mt-10">
         <DeleteBtn/>
+      </Dialog>
+      <Dialog open={saveAlert} handler={BookmarkHandler} className="w-[10%] mt-10 mx-auto text-center rounded text-sucsses">
+        <div className="">Saved</div>
       </Dialog>
     </>
   );
