@@ -1,6 +1,6 @@
 import React from "react";
-import Profile from "./sections/Profile";
-import Users from "./sections/Users";
+import Profile from "./Sections/Profile";
+import Users from "./Sections/Users";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Bookmark from "./Sections/Bookmark";
 

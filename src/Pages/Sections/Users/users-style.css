@@ -1,5 +1,6 @@
 section {
   width: 25%;
+  overflow: hidden;
 }
 
 #tasks {

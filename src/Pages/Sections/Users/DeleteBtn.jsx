@@ -4,11 +4,12 @@ import UserContext from "../../../Context/usersContext";
 
 const DeleteBtn = () => {
 
-  const {deleteStatus , setDeleteStatus} = React.useContext(UserContext)
-
+  const {usersData , setUsersData} = React.useContext(UserContext)
   const deleteHandler = () => {
-    setDeleteStatus(!deleteStatus)
-  }
+    setUsersData({
+      alertStatus : !usersData.alertStatus
+    });
+  };
 
   return (
     <div className="card">

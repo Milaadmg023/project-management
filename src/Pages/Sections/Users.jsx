@@ -18,39 +18,43 @@ import {
 } from "react-icons/fa";
 import { GoPlus } from "react-icons/go";
 import Tasks from "./Tasks";
-import './Users/users-style.css'
+import "./Users/users-style.css";
 import { Message } from "./Users/Message";
 import DeleteBtn from "./Users/DeleteBtn.jsx";
 import UserContext from "../../Context/usersContext.jsx";
-
-
+import { PlusIcon } from "@heroicons/react/24/outline";
 
 const Users = () => {
-  const [id , setId] = React.useState('')
+  const [id, setId] = React.useState("");
   const ShowHandler = (userId) => {
-    setId(userId)
+    setId(userId);
   };
 
-  const {deleteStatus , setDeleteStatus} = React.useContext(UserContext)
+  {/*----Delete Alert Handler----*/}
 
-  const [chatOpen, setChatOpen] = React.useState(false);
+  const {usersData , setUsersData} = React.useContext(UserContext)
+  const deleteHandler = () => {
+    setUsersData({
+      alertStatus : !usersData.alertStatus
+    });
+  };
+
+  {/*----Bookmark Alert Handler----*/}
 
   const [saveAlert, setSaveAlert] = React.useState(false);
+  const BookmarkHandler = () => {
+    setSaveAlert(!saveAlert);
+    setTimeout(() => {
+      setSaveAlert(!saveAlert);
+    }, 2000);
+  };
 
-  const BookmarkHandler =()=>{
-    setSaveAlert(!saveAlert)
-    setTimeout(()=>{
-      setSaveAlert(!saveAlert)
-    }, 2000)
-  } 
- 
-  const handleOpen = () =>{
+  {/*----Chat Modal Handler----*/}
+
+  const [chatOpen, setChatOpen] = React.useState(false);
+  const handleOpen = () => {
     setChatOpen(!chatOpen);
-  } 
-
-  const deleteHandler =()=>{
-    setDeleteStatus(!deleteStatus)
-  }
+  };
 
   return (
     <>
@@ -88,16 +92,25 @@ const Users = () => {
                   <div>
                     <SpeedDial placement="right">
                       <SpeedDialHandler>
-                        <IconButton className="rounded-full bg-gray-600 mx-1 p-1">
+                        <IconButton className="rounded-full bg-gray-600 m-0.5">
                           <GoPlus className="h-5 w-5 transition-transform group-hover:rotate-45" />
                         </IconButton>
                       </SpeedDialHandler>
                       <SpeedDialContent>
                         <SpeedDialAction className="m-[1px]">
-                          <FaTrash size={15} className="text-gray-800" onClick={()=>deleteHandler(data.id)}/>
+                          <FaTrash
+                            size={15}
+                            className="text-gray-800"
+                            onClick={() => deleteHandler(data.id)}
+                          />
                         </SpeedDialAction>
                         <SpeedDialAction className="m-[1px]">
-                          <FaCommentAlt onClick={handleOpen} variant="gradient" size={15} className="text-gray-800" />
+                          <FaCommentAlt
+                            onClick={handleOpen}
+                            variant="gradient"
+                            size={15}
+                            className="text-gray-800"
+                          />
                         </SpeedDialAction>
                         <SpeedDialAction className="m-[1px]">
                           <FaCloudDownloadAlt
@@ -106,7 +119,11 @@ const Users = () => {
                           />
                         </SpeedDialAction>
                         <SpeedDialAction className="m-[1px]">
-                          <FaBookmark size={15} className="text-gray-800" onClick={BookmarkHandler}/>
+                          <FaBookmark
+                            size={15}
+                            className="text-gray-800"
+                            onClick={BookmarkHandler}
+                          />
                         </SpeedDialAction>
                       </SpeedDialContent>
                     </SpeedDial>
@@ -117,16 +134,28 @@ const Users = () => {
           </div>
         </div>
       </section>
-      <Tasks id={id}/>
-      
-      <Dialog open={chatOpen} handler={handleOpen} className="chat-page w-[25%] mx-auto rounded-[10px] border border-gray-900 p-2 mt-10" >
+      <Tasks id={id} />
+
+      <Dialog
+        open={chatOpen}
+        handler={handleOpen}
+        className="chat-page w-[25%] mx-auto rounded-[10px] border border-gray-900 p-2 mt-10"
+      >
         <div className="main border rounded-[29px] mb-2 h-[20rem]"></div>
-        <Message/>
+        <Message />
       </Dialog>
-      <Dialog open={deleteStatus} handler={deleteHandler} className="w-auto  rounded-[30px] mx-auto mt-10">
-        <DeleteBtn/>
+      <Dialog
+        open={usersData.alertStatus}
+        handler={deleteHandler}
+        className="w-auto  rounded-[30px] mx-auto mt-10"
+      >
+        <DeleteBtn />
       </Dialog>
-      <Dialog open={saveAlert} handler={BookmarkHandler} className="w-[10%] mt-10 mx-auto text-center rounded text-sucsses">
+      <Dialog
+        open={saveAlert}
+        handler={BookmarkHandler}
+        className="w-[10%] mt-10 mx-auto text-center rounded text-sucsses"
+      >
         <div className="">Saved</div>
       </Dialog>
     </>
