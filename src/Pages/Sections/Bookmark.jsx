@@ -1,6 +1,17 @@
 import React from "react";
 import "../.././App.css";
+import { IoFilter } from "react-icons/io5";
+import {
+  Button,
+  ButtonGroup
+} from "@material-tailwind/react";
 const Bookmark = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const toggleOpen = () => {
+    setOpen((cur) => !cur);
+  };
+
   return (
     <div className="w-[100%]">
       <div className="search-bar bg-gray-500 h-auto justify-center py-2">
@@ -35,11 +46,22 @@ const Bookmark = () => {
         <section id="all-bookmarks" className="bg-[#6F6F6F] w-[25%]">
           <h2 className="text-center text-xl text-white">All Bookmarks</h2>
           <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
-          <div className="bookmark-container w-5/6 mx-auto ">
-          </div>
+          <div className="bookmark-container w-5/6 mx-auto "></div>
         </section>
         <section id="filtered-bookmarks" className="w-[75%] bg-[#363048]">
-          <h2>Filtered Bookmarks</h2>
+          <div className="flex justify-between text-white pt-1 px-3">
+            <h2 className="text-xl">Filtered Bookmarks</h2>
+            <IoFilter size={30} onClick={toggleOpen} />
+          </div>
+          <div className="filters-container">
+            <ButtonGroup variant="text" className="text-white justify-center gap-2">
+              <Button className="border p-1">Date Add</Button>
+              <Button className="border p-1 ">Folder</Button>
+              <Button className="border p-1">Z-A</Button>
+              <Button className="border p-1">A-Z</Button>
+            </ButtonGroup>
+          </div>
+          <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
         </section>
       </div>
     </div>
