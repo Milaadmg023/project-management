@@ -14,7 +14,14 @@ const App = () => {
       {id:3, job:"UX" , profile:"https://s6.uupload.ir/files/rectangle_3_(2)_z5n9.png",name:"Arlene McCoy",describe:"Service Journey Page User" , lastSeen:"01:34 pm"},
       {id:4, job:"Icons Design" , profile:"https://s6.uupload.ir/files/rectangle_3_(1)_io12.png",name:"Jerome Bell" , describe:"Navbar Icons" , lastSeen:"01:08 pm"},
       {id:5, job:"Web Design" , profile:"https://s6.uupload.ir/files/rectangle_3_7s32.png" , name:"Theresa Webb" , describe:"Profile Web Page Design" , lastSeen:"06:42 AM"},
-    ] 
+    ] ,
+    usersTasks: [
+      {title: 'Fixing header icons' , time:"9/17" , progress : 55},
+      {title: 'Creating footer' , time:"9/15" , progress : 0},
+      {title: 'Updating shoping Cart Header Icons' , time:"9/17" , progress : 0},
+      {title: 'Debuging Admin pannel' , time:"9/20" , progress : 75},
+      {title: 'Fixing users dashbord' , time:"9/18" , progress : 0},
+    ]
   })
   return (
     <UserContext.Provider value={{usersData , setUsersData}}>
