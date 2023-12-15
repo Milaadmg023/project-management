@@ -18,8 +18,8 @@ const App = () => {
     usersTasks: [
       {title: 'Fixing header icons' , time:"9/17" , progress : 55},
       {title: 'Creating footer' , time:"9/15" , progress : 0},
-      {title: 'Updating shoping Cart Header Icons' , time:"9/17" , progress : 0},
-      {title: 'Debuging Admin pannel' , time:"9/20" , progress : 75},
+      {title: 'Updating shoping cart' , time:"9/17" , progress : 0},
+      {title: 'Debuging admin pannel' , time:"9/20" , progress : 75},
       {title: 'Fixing users dashbord' , time:"9/18" , progress : 0},
     ]
   })

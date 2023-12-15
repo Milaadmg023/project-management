@@ -9,6 +9,12 @@ const Tasks = (props) => {
   const { usersData, setUsersData } = React.useContext(UserContext);
   const allTasks = usersData.usersTasks;
   const progressTasks = [];
+  const recentTasks = [];
+  for (const usertask of allTasks) {
+    if (usertask.progress == 0) {
+      recentTasks.push(usertask);
+    }
+  }
   for (const usertask of allTasks) {
     if (usertask.progress !== 0) {
       progressTasks.push(usertask);
@@ -94,6 +100,31 @@ const Tasks = (props) => {
                   <span className="cursor-pointer">Reacent Tasks</span>
                   <span className="cursor-pointer">See All</span>
                 </div>
+                {recentTasks.map((data) => {
+                  return (
+                    <div className="task border border-gray-900 p-1 m-1 rounded bg-white">
+                      <div className="task-header flex justify-between border border-gray-900 p-1 rounded m-0.5">
+                        <span className="text-xl underline">{data.title}</span>
+                        <IoMdMore size={30} className="cursor-pointer" />
+                      </div>
+                      <div className="task-body p-1 m-0.5">
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et
+                          dolore magna aliqua
+                        </p>
+                      </div>
+                      <div className="text-footer flex justify-between p-1 m-0.5">
+                        <p>
+                          Delivery time : <span>{data.time}</span>
+                        </p>
+                        <p>
+                          Progress : <span>{data.progress}%</span>
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
               <div className="all col-span-2">
                 <div className="all-header flex justify-between text-violet-900 bg-green-500 p-1 rounded">
@@ -101,167 +132,33 @@ const Tasks = (props) => {
                   <span className="cursor-pointer">See More</span>
                 </div>
                 <div className="task-container grid grid-cols-2">
-                  <div className="task border border-gray-900 p-1 m-1 rounded bg-white">
-                    <div className="task-header flex justify-between border border-gray-900 p-1 rounded m-0.5">
-                      <span className="text-xl underline">
-                        Fixing Header Icons
-                      </span>
-                      <IoMdMore size={30} className="cursor-pointer" />
-                    </div>
-                    <div className="task-body p-1 m-0.5">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua
-                      </p>
-                    </div>
-                    <div className="text-footer flex justify-between p-1 m-0.5">
-                      <p>
-                        Delivery time : <span>1992/10/15</span>
-                      </p>
-                      <p>
-                        Progress : <span>50%</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="task border border-gray-900 p-1 m-1 rounded bg-white">
-                    <div className="task-header flex justify-between border border-gray-900 p-1 rounded m-0.5">
-                      <span className="text-xl underline">
-                        Fixing Header Icons
-                      </span>
-                      <IoMdMore size={30} className="cursor-pointer" />
-                    </div>
-                    <div className="task-body p-1 m-0.5">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua
-                      </p>
-                    </div>
-                    <div className="text-footer flex justify-between p-1 m-0.5">
-                      <p>
-                        Delivery time : <span>1992/10/15</span>
-                      </p>
-                      <p>
-                        Progress : <span>50%</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="task border border-gray-900 p-1 m-1 rounded bg-white">
-                    <div className="task-header flex justify-between border border-gray-900 p-1 rounded m-0.5">
-                      <span className="text-xl underline">
-                        Fixing Header Icons
-                      </span>
-                      <IoMdMore size={30} className="cursor-pointer" />
-                    </div>
-                    <div className="task-body p-1 m-0.5">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua
-                      </p>
-                    </div>
-                    <div className="text-footer flex justify-between p-1 m-0.5">
-                      <p>
-                        Delivery time : <span>1992/10/15</span>
-                      </p>
-                      <p>
-                        Progress : <span>50%</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="task border border-gray-900 p-1 m-1 rounded bg-white">
-                    <div className="task-header flex justify-between border border-gray-900 p-1 rounded m-0.5">
-                      <span className="text-xl underline">
-                        Fixing Header Icons
-                      </span>
-                      <IoMdMore size={30} className="cursor-pointer" />
-                    </div>
-                    <div className="task-body p-1 m-0.5">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua
-                      </p>
-                    </div>
-                    <div className="text-footer flex justify-between p-1 m-0.5">
-                      <p>
-                        Delivery time : <span>1992/10/15</span>
-                      </p>
-                      <p>
-                        Progress : <span>50%</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="task border border-gray-900 p-1 m-1 rounded bg-white">
-                    <div className="task-header flex justify-between border border-gray-900 p-1 rounded m-0.5">
-                      <span className="text-xl underline">
-                        Fixing Header Icons
-                      </span>
-                      <IoMdMore size={30} className="cursor-pointer" />
-                    </div>
-                    <div className="task-body p-1 m-0.5">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua
-                      </p>
-                    </div>
-                    <div className="text-footer flex justify-between p-1 m-0.5">
-                      <p>
-                        Delivery time : <span>1992/10/15</span>
-                      </p>
-                      <p>
-                        Progress : <span>50%</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="task border border-gray-900 p-1 m-1 rounded bg-white">
-                    <div className="task-header flex justify-between border border-gray-900 p-1 rounded m-0.5">
-                      <span className="text-xl underline">
-                        Fixing Header Icons
-                      </span>
-                      <IoMdMore size={30} className="cursor-pointer" />
-                    </div>
-                    <div className="task-body p-1 m-0.5">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua
-                      </p>
-                    </div>
-                    <div className="text-footer flex justify-between p-1 m-0.5">
-                      <p>
-                        Delivery time : <span>1992/10/15</span>
-                      </p>
-                      <p>
-                        Progress : <span>50%</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="task border border-gray-900 p-1 m-1 rounded bg-white">
-                    <div className="task-header flex justify-between border border-gray-900 p-1 rounded m-0.5">
-                      <span className="text-xl underline">
-                        Fixing Header Icons
-                      </span>
-                      <IoMdMore size={30} className="cursor-pointer" />
-                    </div>
-                    <div className="task-body p-1 m-0.5">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua
-                      </p>
-                    </div>
-                    <div className="text-footer flex justify-between p-1 m-0.5">
-                      <p>
-                        Delivery time : <span>1992/10/15</span>
-                      </p>
-                      <p>
-                        Progress : <span>50%</span>
-                      </p>
-                    </div>
-                  </div>
+                  {allTasks.map((data) => {
+                    return (
+                      <div className="task border border-gray-900 p-1 m-1 rounded bg-white">
+                        <div className="task-header flex justify-between border border-gray-900 p-1 rounded m-0.5">
+                          <span className="text-xl underline">
+                            {data.title}
+                          </span>
+                          <IoMdMore size={30} className="cursor-pointer" />
+                        </div>
+                        <div className="task-body p-1 m-0.5">
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua
+                          </p>
+                        </div>
+                        <div className="text-footer flex justify-between p-1 m-0.5">
+                          <p>
+                            Delivery time : <span>{data.time}</span>
+                          </p>
+                          <p>
+                            Progress : <span>{data.progress}%</span>
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>

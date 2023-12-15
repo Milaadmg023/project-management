@@ -34,6 +34,7 @@ const Users = () => {
 
   const {usersData , setUsersData} = React.useContext(UserContext)
   const deleteHandler = () => {
+    console.log(usersData.alertStatus);
     setUsersData({
       alertStatus : !usersData.alertStatus
     });
