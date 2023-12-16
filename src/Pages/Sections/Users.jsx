@@ -2,31 +2,24 @@ import React from "react";
 import { FaFilter, FaX } from "react-icons/fa6";
 import { LuSettings2 } from "react-icons/lu";
 import membersData from "../../membersData";
-import {
-  IconButton,
-  SpeedDial,
-  SpeedDialHandler,
-  SpeedDialContent,
-  SpeedDialAction,
-  Dialog,
-} from "@material-tailwind/react";
+import { Dialog, Drawer } from "@material-tailwind/react";
 import {
   FaTrash,
   FaBookmark,
   FaCommentAlt,
   FaCloudDownloadAlt,
 } from "react-icons/fa";
-import { GoPlus } from "react-icons/go";
 import Tasks from "./Tasks";
 import "./Users/users-style.css";
-import  Message  from "./Users/Message";
+import Message from "./Users/Message";
 import DeleteBtn from "./Users/DeleteBtn.jsx";
 import UserContext from "../../Context/usersContext.jsx";
 import modalsContext from "../../Context/modalsContext.jsx";
+import { CgMenuLeftAlt } from "react-icons/cg";
+import Profile from "./Profile.jsx";
 
 const Users = () => {
-
-  const {usersData , setUsersData} = React.useContext(UserContext)
+  const { usersData, setUsersData } = React.useContext(UserContext);
   console.log(usersData.membersData);
 
   const [id, setId] = React.useState("");
@@ -34,18 +27,18 @@ const Users = () => {
     setId(userId);
   };
 
-  /*----Delete Alert Handler----*/  
+  /*----Delete Alert Handler----*/
 
-  const {modalStatus, setModalStatus } = React.useContext(modalsContext);
+  const { modalStatus, setModalStatus } = React.useContext(modalsContext);
   const deleteHandler = () => {
-    setModalStatus(!modalStatus)
+    setModalStatus(!modalStatus);
   };
 
   /*----Bookmark Alert Handler----*/
 
   const [saveAlert, setSaveAlert] = React.useState(false);
   const BookmarkHandler = () => {
-    setSaveAlert(!saveAlert)
+    setSaveAlert(!saveAlert);
   };
 
   /*----Chat Modal Handler----*/
@@ -55,18 +48,24 @@ const Users = () => {
     setChatOpen(!chatOpen);
   };
 
+  /*----menu darwer----*/
+
+  const [menuOpen, setMenuOpen] = React.useState(false);
+
+  const openDrawer = () => setMenuOpen(true);
+  const closeDrawer = () => setMenuOpen(false);
+
   return (
     <>
       <section>
         <div className="text-white">
           <div className="filter flex justify-between px-4 pt-3 items-center">
+            <div className="icons flex gap-2">
+              <CgMenuLeftAlt className="cursor-pointer" size={25} onClick={openDrawer} />
+            </div>
             <p className="p-1">
               Sort by: <span className="bg-gray-600 rounded px-1">Date</span>
             </p>
-            <div className="icons flex gap-2">
-              <LuSettings2 size={20} className="cursor-pointer" />
-              <FaFilter size={20} className="cursor-pointer" />
-            </div>
           </div>
           <div className="users-container py-2 h-[1000px]">
             {membersData.map((data) => {
@@ -102,7 +101,10 @@ const Users = () => {
                       className="text-gray-800 cursor-pointer"
                     />
 
-                    <FaCloudDownloadAlt size={15} className="text-gray-800 cursor-pointer" />
+                    <FaCloudDownloadAlt
+                      size={15}
+                      className="text-gray-800 cursor-pointer"
+                    />
                     <FaBookmark
                       size={15}
                       className="text-gray-800 cursor-pointer"
@@ -116,6 +118,11 @@ const Users = () => {
         </div>
       </section>
       <Tasks id={id} />
+      <Drawer open={menuOpen} onClose={closeDrawer}>
+        <div id="profile" className="overflow-y-auto">
+          <Profile />
+        </div>
+      </Drawer>
 
       <Dialog
         open={chatOpen}
@@ -136,7 +143,10 @@ const Users = () => {
         handler={BookmarkHandler}
         className="mt-10 mx-auto p-1 w-fit border bg-gray-900 text-green-400 h-fit"
       >
-        <div className="flex justify-center gap-1 items-center">Item Saved <FaX size={20} onClick={BookmarkHandler} className="cursor-pointer"/></div>
+        <div className="flex justify-center gap-1 items-center">
+          Item Saved{" "}
+          <FaX size={20} onClick={BookmarkHandler} className="cursor-pointer" />
+        </div>
       </Dialog>
     </>
   );

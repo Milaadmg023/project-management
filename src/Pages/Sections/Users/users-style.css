@@ -1,10 +1,10 @@
 section {
-  width: 25%;
+  width: 25vw;
   overflow: hidden;
 }
 
 #tasks {
-  width: 75%;
+  width: 75vw;
   background-color: #2a4c75;
 }
 

@@ -9,16 +9,17 @@ import { Link } from "react-router-dom";
 const Profile = () => {
   const [avtivedBtn , setActiveBtn] = React.useState('')
 
-  React.useEffect(() => {
+  console.log(localStorage.getItem('activebtn'));
 
+  React.useEffect(() => {
+    const inbox =  document.querySelector('#inbox')
+    inbox.classList.add('active')
   }, []);
 
 
   function handleBackground(e) {
     const clickedBtn = e.target;
     setActiveBtn(e.target.id)
-    //const btn = e.target.id;
-    //console.log(btn);
     const activeBtn = document.querySelector('.active');
   
     if (clickedBtn === activeBtn) {
@@ -31,6 +32,9 @@ const Profile = () => {
     }
   
   }
+
+  localStorage.setItem('activebtn' , avtivedBtn)
+  
   
   return (
     <div className="text-white pb-4">

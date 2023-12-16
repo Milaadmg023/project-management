@@ -61,7 +61,7 @@ body {
 
 #users {
     background-color: #393244;
-    width: 82%;
+    width: 100vw;
 }
 
 #users .users {

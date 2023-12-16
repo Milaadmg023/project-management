@@ -7,10 +7,7 @@ import Bookmark from "./Sections/Bookmark";
 const MainPage = () => {
   return (
     <Router>
-      <div id="main-page" className="flex flex-row h-[100vh]">
-        <div id="profile" className="overflow-y-auto">
-          <Profile />
-        </div>
+      <div className="flex flex-row h-[100vh]">
         <div id="users" className="flex">
           <Routes>
             <Route  path="/" element={<Users />}></Route>
