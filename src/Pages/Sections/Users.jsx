@@ -120,9 +120,8 @@ const Users = () => {
       <Dialog
         open={chatOpen}
         handler={handleOpen}
-        className="chat-page w-[25%] mx-auto rounded-[10px] border border-gray-900 p-2 mt-10"
+        className="chat-page w-fit mx-auto rounded-[10px] border border-gray-900 h-fit"
       >
-        <div className="main border rounded-[29px] mb-2 h-[20rem]"></div>
         <Message />
       </Dialog>
       <Dialog

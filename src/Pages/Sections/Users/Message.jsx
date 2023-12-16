@@ -1,16 +1,14 @@
 import React from "react";
 
 function Message() {
-  const button = document.getElementById("setting");
   const dropdown = document.getElementById("dropdown-content");
 
-  button.addEventListener("click", function () {
+  const massegeHandler = ()=> {
     dropdown.classList.toggle("hidden");
-  });
+  }
   return (
     <>
-      {/*component -->*/}
-      <div class="bg-gray-100 h-screen flex flex-col max-w-lg mx-auto">
+      <div class="bg-gray-100 h-[90vh] flex flex-col max-w-lg mx-auto">
         <div class="bg-blue-500 p-4 text-white flex justify-between items-center">
           <button id="login" class="hover:bg-blue-400 rounded-md p-1">
             <svg
@@ -46,7 +44,7 @@ function Message() {
           </button>
           <span>Chat App</span>
           <div class="relative inline-block text-left">
-            <button id="setting" class="hover:bg-blue-400 rounded-md p-1">
+            <button id="setting" class="hover:bg-blue-400 rounded-md p-1" onClick={massegeHandler}>
               <svg
                 width="30px"
                 height="30px"
