@@ -3,9 +3,11 @@ import "./App.css";
 import MainPage from "./Pages/MainPage";
 import UserContext from "./Context/usersContext"
 import { createContext } from "react";
+import modalsContext from "./Context/modalsContext";
 
 
 const App = () => {
+  const [modalStatus , setModalStatus] = React.useState(false)
   const [usersData , setUsersData] = React.useState({
     alertStatus : false,
     membersData : [
@@ -24,9 +26,12 @@ const App = () => {
     ]
   })
   return (
-    <UserContext.Provider value={{usersData , setUsersData}}>
-      <MainPage />
-    </UserContext.Provider>
+    <modalsContext.Provider value={{modalStatus , setModalStatus}}>
+      <UserContext.Provider value={{usersData , setUsersData}}>
+        <MainPage />
+      </UserContext.Provider>
+    </modalsContext.Provider>
+    
     
   );
 };

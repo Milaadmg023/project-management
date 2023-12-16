@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFilter } from "react-icons/fa6";
+import { FaFilter, FaX } from "react-icons/fa6";
 import { LuSettings2 } from "react-icons/lu";
 import membersData from "../../membersData";
 import {
@@ -19,38 +19,36 @@ import {
 import { GoPlus } from "react-icons/go";
 import Tasks from "./Tasks";
 import "./Users/users-style.css";
-import { Message } from "./Users/Message";
+import  Message  from "./Users/Message";
 import DeleteBtn from "./Users/DeleteBtn.jsx";
 import UserContext from "../../Context/usersContext.jsx";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import modalsContext from "../../Context/modalsContext.jsx";
 
 const Users = () => {
+
+  const {usersData , setUsersData} = React.useContext(UserContext)
+  console.log(usersData.membersData);
+
   const [id, setId] = React.useState("");
   const ShowHandler = (userId) => {
     setId(userId);
   };
 
-  {/*----Delete Alert Handler----*/}
+  /*----Delete Alert Handler----*/  
 
-  const {usersData , setUsersData} = React.useContext(UserContext)
+  const {modalStatus, setModalStatus } = React.useContext(modalsContext);
   const deleteHandler = () => {
-    console.log(usersData.alertStatus);
-    setUsersData({
-      alertStatus : !usersData.alertStatus
-    });
+    setModalStatus(!modalStatus)
   };
 
-  {/*----Bookmark Alert Handler----*/}
+  /*----Bookmark Alert Handler----*/
 
   const [saveAlert, setSaveAlert] = React.useState(false);
   const BookmarkHandler = () => {
-    setSaveAlert(!saveAlert);
-    setTimeout(() => {
-      setSaveAlert(!saveAlert);
-    }, 2000);
+    setSaveAlert(!saveAlert)
   };
 
-  {/*----Chat Modal Handler----*/}
+  /*----Chat Modal Handler----*/
 
   const [chatOpen, setChatOpen] = React.useState(false);
   const handleOpen = () => {
@@ -90,44 +88,26 @@ const Users = () => {
                       </h3>
                     </div>
                   </div>
-                  <div>
-                    <SpeedDial placement="right">
-                      <SpeedDialHandler>
-                        <IconButton className="rounded-full bg-gray-600 m-0.5">
-                          <GoPlus className="h-5 w-5 transition-transform group-hover:rotate-45" />
-                        </IconButton>
-                      </SpeedDialHandler>
-                      <SpeedDialContent>
-                        <SpeedDialAction className="m-[1px]">
-                          <FaTrash
-                            size={15}
-                            className="text-gray-800"
-                            onClick={() => deleteHandler(data.id)}
-                          />
-                        </SpeedDialAction>
-                        <SpeedDialAction className="m-[1px]">
-                          <FaCommentAlt
-                            onClick={handleOpen}
-                            variant="gradient"
-                            size={15}
-                            className="text-gray-800"
-                          />
-                        </SpeedDialAction>
-                        <SpeedDialAction className="m-[1px]">
-                          <FaCloudDownloadAlt
-                            size={15}
-                            className="text-gray-800"
-                          />
-                        </SpeedDialAction>
-                        <SpeedDialAction className="m-[1px]">
-                          <FaBookmark
-                            size={15}
-                            className="text-gray-800"
-                            onClick={BookmarkHandler}
-                          />
-                        </SpeedDialAction>
-                      </SpeedDialContent>
-                    </SpeedDial>
+                  <div className="flex bg-white p-1 gap-1 items-center w-fit rounded">
+                    <FaTrash
+                      size={15}
+                      className="text-gray-800 cursor-pointer"
+                      onClick={() => deleteHandler(data.id)}
+                    />
+
+                    <FaCommentAlt
+                      onClick={handleOpen}
+                      variant="gradient"
+                      size={15}
+                      className="text-gray-800 cursor-pointer"
+                    />
+
+                    <FaCloudDownloadAlt size={15} className="text-gray-800 cursor-pointer" />
+                    <FaBookmark
+                      size={15}
+                      className="text-gray-800 cursor-pointer"
+                      onClick={BookmarkHandler}
+                    />
                   </div>
                 </div>
               );
@@ -146,18 +126,18 @@ const Users = () => {
         <Message />
       </Dialog>
       <Dialog
-        open={usersData.alertStatus}
+        open={modalStatus}
         handler={deleteHandler}
-        className="w-auto  rounded-[30px] mx-auto mt-10"
+        className="w-auto  rounded-[30px] mx-auto mt-10 h-fit"
       >
         <DeleteBtn />
       </Dialog>
       <Dialog
         open={saveAlert}
         handler={BookmarkHandler}
-        className="w-[10%] mt-10 mx-auto text-center rounded text-sucsses"
+        className="mt-10 mx-auto p-1 w-fit border bg-gray-900 text-green-400 h-fit"
       >
-        <div className="">Saved</div>
+        <div className="flex justify-center gap-1 items-center">Item Saved <FaX size={20} onClick={BookmarkHandler} className="cursor-pointer"/></div>
       </Dialog>
     </>
   );

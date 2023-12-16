@@ -1,14 +1,12 @@
 import React from "react";
 import "./users-style.css"
-import UserContext from "../../../Context/usersContext";
+import modalsContext from "../../../Context/modalsContext";
 
 const DeleteBtn = () => {
 
-  const {usersData , setUsersData} = React.useContext(UserContext)
+  const {modalStatus, setModalStatus } = React.useContext(modalsContext);
   const deleteHandler = () => {
-    setUsersData({
-      alertStatus : !usersData.alertStatus
-    });
+    setModalStatus(!modalStatus)
   };
 
   return (
