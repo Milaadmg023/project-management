@@ -15,8 +15,6 @@ import Message from "./Users/Message";
 import DeleteBtn from "./Users/DeleteBtn.jsx";
 import UserContext from "../../Context/usersContext.jsx";
 import modalsContext from "../../Context/modalsContext.jsx";
-import { CgMenuLeftAlt } from "react-icons/cg";
-import Profile from "./Profile.jsx";
 
 const Users = () => {
   const { usersData, setUsersData } = React.useContext(UserContext);
@@ -50,19 +48,13 @@ const Users = () => {
 
   /*----menu darwer----*/
 
-  const [menuOpen, setMenuOpen] = React.useState(false);
 
-  const openDrawer = () => setMenuOpen(true);
-  const closeDrawer = () => setMenuOpen(false);
 
   return (
     <>
       <section>
         <div className="text-white">
           <div className="filter flex justify-between px-4 pt-3 items-center">
-            <div className="icons flex gap-2">
-              <CgMenuLeftAlt className="cursor-pointer" size={25} onClick={openDrawer} />
-            </div>
             <p className="p-1">
               Sort by: <span className="bg-gray-600 rounded px-1">Date</span>
             </p>
@@ -118,11 +110,6 @@ const Users = () => {
         </div>
       </section>
       <Tasks id={id} />
-      <Drawer open={menuOpen} onClose={closeDrawer}>
-        <div id="profile" className="overflow-y-auto">
-          <Profile />
-        </div>
-      </Drawer>
 
       <Dialog
         open={chatOpen}

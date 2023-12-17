@@ -5,7 +5,6 @@ body {
 /*----------profile------------*/
 #profile {
     background-color: #BE9AA0B5;
-    width:18%;
 }
 
 /*-----scroll-style------*/
@@ -61,7 +60,7 @@ body {
 
 #users {
     background-color: #393244;
-    width: 100vw;
+    min-width: 82%;
 }
 
 #users .users {
