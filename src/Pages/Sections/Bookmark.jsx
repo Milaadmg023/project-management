@@ -5,6 +5,7 @@ import {
   Button,
   ButtonGroup
 } from "@material-tailwind/react";
+import SavedUser from "./Users/SavedUser";
 const Bookmark = () => {
   const [open, setOpen] = React.useState(false);
 
@@ -43,25 +44,36 @@ const Bookmark = () => {
         </div>
       </div>
       <div className="flex w-[100%] h-[100vh]">
-        <section id="all-bookmarks" className="bg-[#6F6F6F] w-[25%]">
-          <h2 className="text-center text-xl text-white">All Bookmarks</h2>
-          <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
-          <div className="bookmark-container w-5/6 mx-auto "></div>
-        </section>
-        <section id="filtered-bookmarks" className="w-[75%] bg-[#363048]">
+        <section id="filtered-bookmarks" className="bg-[#363048] w-[100%]">
           <div className="flex justify-between text-white pt-1 px-3">
             <h2 className="text-xl">Filtered Bookmarks</h2>
             <IoFilter size={30} onClick={toggleOpen} />
           </div>
           <div className="filters-container">
-            <ButtonGroup variant="text" className="text-white justify-center gap-2">
-              <Button className="border p-1">Date Add</Button>
-              <Button className="border p-1 ">Folder</Button>
-              <Button className="border p-1">Z-A</Button>
-              <Button className="border p-1">A-Z</Button>
+            <ButtonGroup variant="text" className="justify-center gap-2">
+              <Button className="border p-1 text-white">Date Add</Button>
+              <Button className="border p-1 text-white ">Folder</Button>
+              <Button className="border p-1 text-white">Z-A</Button>
+              <Button className="border p-1 text-white">A-Z</Button>
             </ButtonGroup>
           </div>
           <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
+          <div className="groups__container">
+            <div className="saved__users">
+              <h1 className="text-white text-center text-xl">Users</h1>
+              <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
+              <div className="bookmarks__container">
+                <SavedUser/>
+              </div>
+            </div>
+            <div className="saved__tasks">
+              <h1 className="text-white text-center text-xl">Tasks</h1>
+              <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
+              <div className="bookmarks__container">
+
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </div>

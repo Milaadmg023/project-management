@@ -22,7 +22,7 @@ const Tasks = (props) => {
   }
 
   return (
-    <div id="tasks">
+    <div id="tasks" className="bg-[#2A4C75]">
       {filteredMembers.map((member) => {
         return (
           <div className="grid-rows-2 text-white">

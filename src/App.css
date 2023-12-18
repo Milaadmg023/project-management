@@ -60,17 +60,8 @@ body {
 
 #users {
     background-color: #393244;
-    min-width: 82%;
 }
 
 #users .users {
     background-color: #403E51;
 }
-
-
-/*----------tasks---------------*/
-
-#tasks {
-    background-color: #2A4C75;
-}
-

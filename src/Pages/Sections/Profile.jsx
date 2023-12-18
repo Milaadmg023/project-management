@@ -10,27 +10,6 @@ import { FaX } from "react-icons/fa6";
 
 
 const Profile = () => {
-  const [avtivedBtn, setActiveBtn] = React.useState("");
-
-  React.useEffect(() => {
-    const inbox = document.querySelector("#inbox");
-    inbox.classList.add("active");
-  }, []);
-
-  function handleBackground(e) {
-    const clickedBtn = e.target;
-    setActiveBtn(e.target.id);
-    const activeBtn = document.querySelector(".active");
-
-    if (clickedBtn === activeBtn) {
-      clickedBtn.classList.remove("active");
-    } else {
-      if (activeBtn) {
-        activeBtn.classList.remove("active");
-      }
-      clickedBtn.classList.add("active");
-    }
-  }
 
   const [menuStatus, setMenuStatus] = React.useState(false);
 
@@ -38,8 +17,8 @@ const Profile = () => {
 
   return (
     <div className="flex">
-      <div className="p-1 flex flex-col gap-2">
-        <div className="menu-icon flex gap-2">
+      <div className="p-1 flex flex-col gap-y-2">
+        <div className="menu-icon">
           <CgMenuLeftAlt
             className="cursor-pointer mx-auto"
             size={30}
@@ -49,9 +28,8 @@ const Profile = () => {
         <div className="commands-container">
             <Link to="/">
               <div
-                className="flex flex-col cursor-pointer rounded-[0.5rem] justify-center text-center"
+                className="flex flex-col cursor-pointer rounded-[0.5rem] justify-center text-center active"
                 id="inbox"
-                onClick={handleBackground}
               >
                 <HiOutlineMail size={25} className="mx-auto" /> Inbox
               </div>
@@ -61,7 +39,6 @@ const Profile = () => {
               <div
                 className="flex flex-col mt-2 p-1 cursor-pointer rounded-[0.5rem]"
                 id="bookmark"
-                onClick={handleBackground}
               >
                 <FaBookmark size={22} className="mx-auto"/> Bookmark
               </div>

@@ -18,7 +18,6 @@ import modalsContext from "../../Context/modalsContext.jsx";
 
 const Users = () => {
   const { usersData, setUsersData } = React.useContext(UserContext);
-  console.log(usersData.membersData);
 
   const [id, setId] = React.useState("");
   const ShowHandler = (userId) => {

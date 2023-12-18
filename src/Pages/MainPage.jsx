@@ -8,10 +8,10 @@ const MainPage = () => {
   return (
     <Router>
       <div id="main-page" className="flex flex-row h-[100vh]">
-        <div id="profile" className="overflow-y-auto overflow-x-hidden min-w-[5%] max-w-[7%]">
+        <div id="profile" className="overflow-y-auto overflow-x-hidden w-auto">
           <Profile />
         </div>
-        <div id="users" className="flex">
+        <div id="users" className="flex min-w-[82%] w-[93%]">
           <Routes>
             <Route  path="/" element={<Users />}></Route>
             <Route  path="/bookmark" element={<Bookmark />}></Route>
