@@ -6,6 +6,7 @@ import {
   ButtonGroup
 } from "@material-tailwind/react";
 import SavedUser from "./Users/SavedUser";
+import SavedTask from "./Users/SavedTask";
 const Bookmark = () => {
   const [open, setOpen] = React.useState(false);
 
@@ -62,15 +63,15 @@ const Bookmark = () => {
             <div className="saved__users">
               <h1 className="text-white text-center text-xl">Users</h1>
               <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
-              <div className="bookmarks__container">
+              <div className="bookmarks__container px-8 py-2 grid grid-cols-4 justify-around">
                 <SavedUser/>
               </div>
             </div>
             <div className="saved__tasks">
               <h1 className="text-white text-center text-xl">Tasks</h1>
               <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
-              <div className="bookmarks__container">
-
+              <div className="bookmarks__container px-8 py-2 grid grid-cols-4 justify-around">
+                <SavedTask/>
               </div>
             </div>
           </div>

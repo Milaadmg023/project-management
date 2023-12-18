@@ -1,12 +1,12 @@
 import React from "react";
 import membersData from "../../membersData";
 import { IoMdMore } from "react-icons/io";
-import UserContext from "../../Context/usersContext";
+import tasksContext from './../../Context/tasksContext';
 
 const Tasks = (props) => {
   const filteredMembers = membersData.filter((data) => data.id === props.id);
   const [select, setSelect] = React.useState("");
-  const { usersData, setUsersData } = React.useContext(UserContext);
+  const { usersData, setUsersData } = React.useContext(tasksContext);
   const allTasks = usersData.usersTasks;
   const progressTasks = [];
   const recentTasks = [];
