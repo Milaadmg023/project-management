@@ -7,7 +7,15 @@ import {
 } from "@material-tailwind/react";
 import SavedUser from "./Users/SavedUser";
 import SavedTask from "./Users/SavedTask";
+import SavedContext from "../../Context/savedContaxt";
+
 const Bookmark = () => {
+
+  const {bookmarks , setBookmarks} = React.useContext(SavedContext)
+  const uniqueUsers = bookmarks.filter((value, index, self) => {
+    return self.indexOf(value) === index;
+  });
+
   const [open, setOpen] = React.useState(false);
 
   const toggleOpen = () => {
@@ -15,7 +23,7 @@ const Bookmark = () => {
   };
 
   return (
-    <div className="w-[100%]">
+    <div className="w-[100vw]">
       <div className="search-bar bg-gray-500 h-auto justify-center py-2">
         <div className="flex items-center justify-center items-center">
           <div className="rounded-lg bg-gray-200">
@@ -59,15 +67,22 @@ const Bookmark = () => {
             </ButtonGroup>
           </div>
           <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
-          <div className="groups__container">
-            <div className="saved__users">
+          <div className="groups__container grid grid-cols-2">
+            <div className="saved__users h-[100vh] overflow-y-auto">
               <h1 className="text-white text-center text-xl">Users</h1>
               <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
-              <div className="bookmarks__container px-8 py-2 grid grid-cols-4 justify-around">
-                <SavedUser/>
+              <div className="bookmarks__container px-4 py-2 grid grid-cols-2 justify-center">
+                {
+                  uniqueUsers.map((user)=>{
+                    return(
+                      <SavedUser value={user}/>
+                    )
+                  })
+                }
+                
               </div>
             </div>
-            <div className="saved__tasks">
+            <div className="saved__tasks overflow-y-auto">
               <h1 className="text-white text-center text-xl">Tasks</h1>
               <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
               <div className="bookmarks__container px-8 py-2 grid grid-cols-4 justify-around">

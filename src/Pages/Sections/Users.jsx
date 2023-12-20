@@ -13,11 +13,13 @@ import Tasks from "./Tasks";
 import "./Users/users-style.css";
 import Message from "./Users/Message";
 import DeleteBtn from "./Users/DeleteBtn.jsx";
-import UserContext from "../../Context/tasksContext.jsx";
 import modalsContext from "../../Context/modalsContext.jsx";
+import usersContext from "../../Context/usersContext.jsx";
+import SavedContext from "../../Context/savedContaxt.jsx";
 
 const Users = () => {
-  const { usersData, setUsersData } = React.useContext(UserContext);
+  const { usersInfo, setUsersInfo } = React.useContext(usersContext);
+  
 
   const [id, setId] = React.useState("");
   const ShowHandler = (userId) => {
@@ -34,9 +36,16 @@ const Users = () => {
   /*----Bookmark Alert Handler----*/
 
   const [saveAlert, setSaveAlert] = React.useState(false);
-  const BookmarkHandler = () => {
+  const {bookmarks , setBookmarks} = React.useContext(SavedContext)
+  const BookmarkHandler = (user) => {
     setSaveAlert(!saveAlert);
+    setBookmarks((prevBookmarks) => [...prevBookmarks, user]);
+    console.log(bookmarks);
   };
+
+  const closeBookmark = ()=>{
+    setSaveAlert(!saveAlert)
+  }
 
   /*----Chat Modal Handler----*/
 
@@ -59,7 +68,7 @@ const Users = () => {
             </p>
           </div>
           <div className="users-container py-2 h-[1000px]">
-            {membersData.map((data) => {
+            {usersInfo.map((data) => {
               return (
                 <div
                   className="grid-rows-2 m-2 bg-gray-500 rounded-md"
@@ -82,7 +91,7 @@ const Users = () => {
                     <FaTrash
                       size={15}
                       className="text-gray-800 cursor-pointer"
-                      onClick={() => deleteHandler(data.id)}
+                      onClick={() => deleteHandler(data)}
                     />
 
                     <FaCommentAlt
@@ -99,7 +108,7 @@ const Users = () => {
                     <FaBookmark
                       size={15}
                       className="text-gray-800 cursor-pointer"
-                      onClick={BookmarkHandler}
+                      onClick={()=>BookmarkHandler(data)}
                     />
                   </div>
                 </div>
@@ -126,12 +135,12 @@ const Users = () => {
       </Dialog>
       <Dialog
         open={saveAlert}
-        handler={BookmarkHandler}
+        handler={closeBookmark}
         className="mt-10 mx-auto p-1 w-fit border bg-gray-900 text-green-400 h-fit"
       >
         <div className="flex justify-center gap-1 items-center">
-          Item Saved{" "}
-          <FaX size={20} onClick={BookmarkHandler} className="cursor-pointer" />
+          Item Saved
+          <FaX size={20} onClick={closeBookmark} className="cursor-pointer" />
         </div>
       </Dialog>
     </>

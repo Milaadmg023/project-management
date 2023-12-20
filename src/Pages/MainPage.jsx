@@ -11,7 +11,7 @@ const MainPage = () => {
         <div id="profile" className="overflow-y-auto overflow-x-hidden w-auto">
           <Profile />
         </div>
-        <div id="users" className="flex min-w-[82%] w-[93%]">
+        <div id="users" className="flex min-w-[82%] w-[100%]">
           <Routes>
             <Route  path="/" element={<Users />}></Route>
             <Route  path="/bookmark" element={<Bookmark />}></Route>

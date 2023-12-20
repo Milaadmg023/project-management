@@ -4,9 +4,11 @@ import MainPage from "./Pages/MainPage";
 import tasksContext from "./Context/tasksContext";
 import modalsContext from "./Context/modalsContext";
 import usersContext from "./Context/usersContext";
+import SavedContext from "./Context/savedContaxt";
 
 const App = () => {
   const [modalStatus, setModalStatus] = React.useState(false);
+
   const [usersData, setUsersData] = React.useState({
     usersTasks: [
       {
@@ -36,55 +38,63 @@ const App = () => {
       },
     ],
   });
-  const [usersInfo, setUsersInfo] = React.useState({
-    membersData: [
-      {
-        id: 1,
-        job: "Visual Design",
-        profile: "https://s6.uupload.ir/files/rectangle_3_(4)_r7i0.png",
-        name: "Guy Hawkins",
-        describe: "Header Architecture",
-        lastSeen: "12:01 pm",
-      },
-      {
-        id: 2,
-        job: "UI",
-        profile: "https://s6.uupload.ir/files/rectangle_3_(3)_z830.png",
-        name: "Jacob Jones",
-        describe: "Careers Page UI Screens",
-        lastSeen: "07:17 AM",
-      },
-      {
-        id: 3,
-        job: "UX",
-        profile: "https://s6.uupload.ir/files/rectangle_3_(2)_z5n9.png",
-        name: "Arlene McCoy",
-        describe: "Service Journey Page User",
-        lastSeen: "01:34 pm",
-      },
-      {
-        id: 4,
-        job: "Icons Design",
-        profile: "https://s6.uupload.ir/files/rectangle_3_(1)_io12.png",
-        name: "Jerome Bell",
-        describe: "Navbar Icons",
-        lastSeen: "01:08 pm",
-      },
-      {
-        id: 5,
-        job: "Web Design",
-        profile: "https://s6.uupload.ir/files/rectangle_3_7s32.png",
-        name: "Theresa Webb",
-        describe: "Profile Web Page Design",
-        lastSeen: "06:42 AM",
-      },
-    ],
-  });
+
+  const [usersInfo, setUsersInfo] = React.useState([
+    {
+      id: 1,
+      job: "Visual Designer",
+      profile: "https://s6.uupload.ir/files/rectangle_3_(4)_r7i0.png",
+      name: "Guy Hawkins",
+      describe: "Header Architecture",
+      lastSeen: "12:01 pm",
+      saved: false,
+    },
+    {
+      id: 2,
+      job: "UI Designer",
+      profile: "https://s6.uupload.ir/files/rectangle_3_(3)_z830.png",
+      name: "Jacob Jones",
+      describe: "Careers Page UI Screens",
+      lastSeen: "07:17 AM",
+      saved: false,
+    },
+    {
+      id: 3,
+      job: "UX Designer",
+      profile: "https://s6.uupload.ir/files/rectangle_3_(2)_z5n9.png",
+      name: "Arlene McCoy",
+      describe: "Service Journey Page User",
+      lastSeen: "01:34 pm",
+      saved: false,
+    },
+    {
+      id: 4,
+      job: "Icons Designer",
+      profile: "https://s6.uupload.ir/files/rectangle_3_(1)_io12.png",
+      name: "Jerome Bell",
+      describe: "Navbar Icons",
+      lastSeen: "01:08 pm",
+      saved: false,
+    },
+    {
+      id: 5,
+      job: "Web Developer",
+      profile: "https://s6.uupload.ir/files/rectangle_3_7s32.png",
+      name: "Theresa Webb",
+      describe: "Profile Web Page Design",
+      lastSeen: "06:42 AM",
+      saved: false,
+    },
+  ]);
+
+  const [bookmarks , setBookmarks] = React.useState([])
   return (
     <modalsContext.Provider value={{ modalStatus, setModalStatus }}>
       <tasksContext.Provider value={{ usersData, setUsersData }}>
-        <usersContext.Provider value={{usersInfo , setUsersInfo}}>
-          <MainPage />
+        <usersContext.Provider value={{ usersInfo, setUsersInfo }}>
+          <SavedContext.Provider value={{bookmarks , setBookmarks}}>
+            <MainPage />
+          </SavedContext.Provider>
         </usersContext.Provider>
       </tasksContext.Provider>
     </modalsContext.Provider>

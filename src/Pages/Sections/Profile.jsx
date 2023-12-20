@@ -62,7 +62,7 @@ const Profile = () => {
             <p className="font-thin">MdPro1992@Gmail.com</p>
           </div>
           <p className="h-0.5 bg-white mx-auto my-4 w-3/4 my-2"></p>
-          <div className="members">
+          <div className="members-container">
             <p className="text-white flex justify-between px-9">
               ADD NEW
               <MdAddBox className="cursor-pointer" size={22} />

@@ -2,19 +2,20 @@ import React from "react";
 import { IoIosGitNetwork } from "react-icons/io";
 import { FaX } from "react-icons/fa6";
 
-function SavedUser() {
+function SavedUser(user) {
+  console.log(user.value.id);
   return (
     <>
-    <div className="card__container bg-purple-500 w-fit p-2 rounded-[10%] text-center flex flex-col gap-2">
+    <div className="card__container bg-purple-500 w-fit p-2 rounded-[10%] text-center flex flex-col gap-2 max-w-[14vw] my-1 mx-auto">
      <div className="card__header text-white">
           <div className="justify-end flex">
             <FaX/>
           </div>
-          <img src="https://dummyimage.com/400x400/615c61/f7f7fc&text=Profile" alt="profile img" className="h-[4rem] w-[4rem] rounded-[50%] mx-auto"/>
+          <img src={user.value.profile} alt="profile img" className="h-[4rem] w-[4rem] rounded-[50%] mx-auto"/>
      </div>
-     <p className="text-white">John Doe</p>
-     <div className="card__body flex font-bold py-2 px-6 rounded-[50px] bg-white gap-2">
-      <div className="job">Ui Designer</div>
+     <p className="text-white">{user.value.name}</p>
+     <div className="card__body flex font-bold py-2 px-6 rounded-[50px] bg-white gap-2 grid grid-cols-2">
+      <div className="job">{user.value.job}</div>
       <div className="tasks__num flex items-center">
         <IoIosGitNetwork/>
         <p>4 Tasks</p>
