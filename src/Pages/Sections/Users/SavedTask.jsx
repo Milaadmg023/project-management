@@ -1,21 +1,25 @@
 import React from 'react'
-import { IoIosGitNetwork } from "react-icons/io";
 import { FaX } from "react-icons/fa6";
+import SavedContext from '../../../Context/savedContaxt';
 
+function SavedTask(task) {
+  const {savedTasks , setSavedTasks} = React.useContext(SavedContext)
 
-function SavedTask() {
+  const DeleteHandler=(task)=>{
+    const updatedTasks = savedTasks.filter(item => item !== task);
+    setSavedTasks(updatedTasks);
+  }
   return (
      <>
-     <div className="card__container bg-purple-500 w-fit p-2 rounded-[10%] text-center flex flex-col gap-2">
+     <div className="card__container bg-purple-500 w-fit p-2 rounded-[10%] text-center flex flex-col gap-2 max-w-[14vw] my-1 mx-auto h-[28vh]">
       <div className="card__header text-white flex justify-end">
-          <FaX/>
+          <FaX className='cursor-pointer' onClick={()=>DeleteHandler(task.value)}/>
       </div>
-      <p className="text-white">John Doe</p>
+      <p className="text-white">{task.value.title}</p>
       <div className="card__body flex font-bold py-2 px-6 rounded-[50px] bg-white gap-2">
-       <div className="job">Time : 9/15</div>
+       <div className="job">Time: {task.value.time}</div>
        <div className="tasks__num flex items-center">
-         <IoIosGitNetwork/>
-         <p>Progress: 25%</p>
+         <p>Progress: {task.value.progress}</p>
        </div>
       </div>
       <div className="card__footer">

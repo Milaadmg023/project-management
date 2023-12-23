@@ -1,15 +1,21 @@
 import React from "react";
 import { IoIosGitNetwork } from "react-icons/io";
 import { FaX } from "react-icons/fa6";
+import SavedContext from "../../../Context/savedContaxt";
 
 function SavedUser(user) {
-  console.log(user.value.id);
+  const {bookmarks , setBookmarks} = React.useContext(SavedContext)
+  const DeleteHandler=(user)=>{
+    const updatedTasks = bookmarks.filter(item => item !== user);
+    setBookmarks(updatedTasks);
+  }
+
   return (
     <>
-    <div className="card__container bg-purple-500 w-fit p-2 rounded-[10%] text-center flex flex-col gap-2 max-w-[14vw] my-1 mx-auto">
+    <div className="card__container bg-purple-500 w-fit p-2 rounded-[10%] text-center flex flex-col gap-2 max-w-[14vw] my-1 mx-auto h-[36vh]">
      <div className="card__header text-white">
           <div className="justify-end flex">
-            <FaX/>
+            <FaX className="cursor-pointer" onClick={()=>DeleteHandler(user.value)}/>
           </div>
           <img src={user.value.profile} alt="profile img" className="h-[4rem] w-[4rem] rounded-[50%] mx-auto"/>
      </div>

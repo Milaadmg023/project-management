@@ -31,7 +31,7 @@ const Profile = () => {
                 className="flex flex-col cursor-pointer rounded-[0.5rem] justify-center text-center active"
                 id="inbox"
               >
-                <HiOutlineMail size={25} className="mx-auto" /> Inbox
+                <HiOutlineMail size={25} className="mx-auto" /> <span className="hidden md:block">Inbox</span>
               </div>
             </Link>
 
@@ -40,7 +40,7 @@ const Profile = () => {
                 className="flex flex-col mt-2 p-1 cursor-pointer rounded-[0.5rem]"
                 id="bookmark"
               >
-                <FaBookmark size={22} className="mx-auto"/> Bookmark
+                <FaBookmark size={22} className="mx-auto"/> <span className="hidden md:block">Bookmark</span>
               </div>
             </Link>
         </div>

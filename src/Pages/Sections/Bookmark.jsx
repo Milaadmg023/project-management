@@ -16,8 +16,12 @@ const Bookmark = () => {
     return self.indexOf(value) === index;
   });
 
-  const [open, setOpen] = React.useState(false);
+  const {savedTasks , setSavedTasks} = React.useContext(SavedContext)
+  const uniqueTasks = savedTasks.filter((value, index, self) => {
+    return self.indexOf(value) === index;
+  });
 
+  const [open, setOpen] = React.useState(false);
   const toggleOpen = () => {
     setOpen((cur) => !cur);
   };
@@ -67,11 +71,11 @@ const Bookmark = () => {
             </ButtonGroup>
           </div>
           <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
-          <div className="groups__container grid grid-cols-2">
-            <div className="saved__users h-[100vh] overflow-y-auto">
+          <div className="groups__container grid grid-cols-1 lg:grid-cols-2 overflow-y-auto h-[100vh] pb-[9rem]">
+            <div className="saved__users h-[80vh]">
               <h1 className="text-white text-center text-xl">Users</h1>
               <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
-              <div className="bookmarks__container px-4 py-2 grid grid-cols-2 justify-center">
+              <div className="bookmarks__container px-0 lg:px-4 py-2 grid grid-cols-1 lg:grid-cols-2 justify-center">
                 {
                   uniqueUsers.map((user)=>{
                     return(
@@ -82,11 +86,17 @@ const Bookmark = () => {
                 
               </div>
             </div>
-            <div className="saved__tasks overflow-y-auto">
+            <div className="saved__tasks h-[80vh]">
               <h1 className="text-white text-center text-xl">Tasks</h1>
               <p className="h-0.5 bg-white mx-auto w-5/6 my-2"></p>
-              <div className="bookmarks__container px-8 py-2 grid grid-cols-4 justify-around">
-                <SavedTask/>
+              <div className="bookmarks__container px-8 py-2 grid grid-cols-2 justify-center">
+               {
+                  uniqueTasks.map((task)=>{
+                    return(
+                      <SavedTask value={task}/>
+                    )
+                  })
+                }
               </div>
             </div>
           </div>

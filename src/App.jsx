@@ -88,11 +88,12 @@ const App = () => {
   ]);
 
   const [bookmarks , setBookmarks] = React.useState([])
+  const [savedTasks , setSavedTasks] = React.useState([])
   return (
     <modalsContext.Provider value={{ modalStatus, setModalStatus }}>
       <tasksContext.Provider value={{ usersData, setUsersData }}>
         <usersContext.Provider value={{ usersInfo, setUsersInfo }}>
-          <SavedContext.Provider value={{bookmarks , setBookmarks}}>
+          <SavedContext.Provider value={{bookmarks , setBookmarks , savedTasks , setSavedTasks}}>
             <MainPage />
           </SavedContext.Provider>
         </usersContext.Provider>

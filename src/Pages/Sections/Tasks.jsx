@@ -1,7 +1,8 @@
 import React from "react";
 import membersData from "../../membersData";
-import { IoMdMore } from "react-icons/io";
 import tasksContext from './../../Context/tasksContext';
+import { FaBookmark } from "react-icons/fa";
+import SavedContext from "../../Context/savedContaxt";
 
 const Tasks = (props) => {
   const filteredMembers = membersData.filter((data) => data.id === props.id);
@@ -20,6 +21,14 @@ const Tasks = (props) => {
       progressTasks.push(usertask);
     }
   }
+
+  /*------Bookmark----------*/
+
+  const {savedTasks , setSavedTasks} = React.useContext(SavedContext)
+  const BookmarkHandler = (user) => {
+    setSavedTasks((prevBookmarks) => [...prevBookmarks, user]);
+    console.log(savedTasks);
+  };
 
   return (
     <div id="tasks" className="bg-[#2A4C75]">
@@ -63,7 +72,7 @@ const Tasks = (props) => {
               </div>
             </div>
             <p className="h-0.5 bg-white mx-auto w-5/6"></p>
-            <div className="tasks-container border w-5/6 mx-auto my-4 h-[75vh] rounded bg-white text-black p-2 grid grid-cols-2 gap-2 overflow-y-auto">
+            <div className="tasks-container border w-5/6 mx-auto mt-4 pb-[8rem] lg:pb-24 h-[90vh] rounded bg-white text-black p-2 grid grid-cols-1 lg:grid-cols-2 gap-2 overflow-y-auto">
               <div className="progress border rounded p-1 bg-gray-100">
                 <div className="progress-header flex justify-between text-violet-900 bg-yellow-500 p-1 rounded">
                   <span>In Progress</span>
@@ -74,7 +83,7 @@ const Tasks = (props) => {
                     <div className="task border border-gray-900 p-1 m-1 rounded bg-white">
                       <div className="task-header flex justify-between border border-gray-900 p-1 rounded m-0.5">
                         <span className="text-xl underline">{data.title}</span>
-                        <IoMdMore size={30} className="cursor-pointer" />
+                        <FaBookmark size={30} className="cursor-pointer" onClick={()=>BookmarkHandler(data)}/>
                       </div>
                       <div className="task-body p-1 m-0.5">
                         <p>
@@ -105,7 +114,7 @@ const Tasks = (props) => {
                     <div className="task border border-gray-900 p-1 m-1 rounded bg-white">
                       <div className="task-header flex justify-between border border-gray-900 p-1 rounded m-0.5">
                         <span className="text-xl underline">{data.title}</span>
-                        <IoMdMore size={30} className="cursor-pointer" />
+                        <FaBookmark size={30} className="cursor-pointer" onClick={()=>BookmarkHandler(data)}/>
                       </div>
                       <div className="task-body p-1 m-0.5">
                         <p>
@@ -126,12 +135,12 @@ const Tasks = (props) => {
                   );
                 })}
               </div>
-              <div className="all col-span-2">
+              <div className="all lg:col-span-2">
                 <div className="all-header flex justify-between text-violet-900 bg-green-500 p-1 rounded">
                   <span className="cursor-pointer">All Tasks</span>
                   <span className="cursor-pointer">See More</span>
                 </div>
-                <div className="task-container grid grid-cols-2">
+                <div className="task-container flex flex-col md:grid md:grid-cols-2">
                   {allTasks.map((data) => {
                     return (
                       <div className="task border border-gray-900 p-1 m-1 rounded bg-white">
@@ -139,7 +148,7 @@ const Tasks = (props) => {
                           <span className="text-xl underline">
                             {data.title}
                           </span>
-                          <IoMdMore size={30} className="cursor-pointer" />
+                          <FaBookmark size={30} className="cursor-pointer" onClick={()=>BookmarkHandler(data)}/>
                         </div>
                         <div className="task-body p-1 m-0.5">
                           <p>

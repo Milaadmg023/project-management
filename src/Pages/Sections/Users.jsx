@@ -60,34 +60,35 @@ const Users = () => {
 
   return (
     <>
-      <section>
+      <section className="text-[13px] sm:text-[16px] w-fit">
         <div className="text-white">
-          <div className="filter flex justify-between px-4 pt-3 items-center">
+          <div className="filter flex justify-between p-0 sm:px-4 pt-3 items-center">
             <p className="p-1">
-              Sort by: <span className="bg-gray-600 rounded px-1">Date</span>
+              Sort by: <span className="bg-gray-600 rounded p-0 md:px-1">Date</span>
             </p>
           </div>
-          <div className="users-container py-2 h-[1000px]">
+          <div className="users-container py-2 h-[90vh] overflow-y-auto w-fit">
             {usersInfo.map((data) => {
               return (
                 <div
-                  className="grid-rows-2 m-2 bg-gray-500 rounded-md"
+                  id="user__container"
+                  className="flex flex-col lg:flex-row m-2 bg-gray-500 rounded-md lg:w-fit"
                   onClick={() => ShowHandler(data.id)}
                 >
-                  <div className="flex">
+                  <div id="user-profile" className="flex justify-center md:justify-start lg:w-[13vw]" >
                     <img
                       src={data.profile}
                       alt="profile img"
-                      className="h-14 m-1"
+                      className="h-14 m-0 md:m-1"
                     />
-                    <div>
+                    <div id="profile-desc" className="hidden md:block">
                       <span>{data.name}</span>
-                      <h3 className="text-gray-400 self-end mt-3">
+                      <h3 className="text-gray-400 self-end">
                         {data.describe}
                       </h3>
                     </div>
                   </div>
-                  <div className="flex bg-white p-1 gap-1 items-center w-fit rounded">
+                  <div id="user-commands" className="flex bg-white p-1 gap-1 items-center rounded justify-center h-fit lg:grid lg:w-fit">
                     <FaTrash
                       size={15}
                       className="text-gray-800 cursor-pointer"
