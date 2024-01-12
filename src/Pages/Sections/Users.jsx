@@ -118,7 +118,7 @@ const Users = () => {
           </div>
         </div>
       </section>
-      <Tasks id={id} />
+      <Tasks id={id}/>
 
       <Dialog
         open={chatOpen}
