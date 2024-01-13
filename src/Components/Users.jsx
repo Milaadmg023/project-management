@@ -17,9 +17,9 @@ import SavedContext from "../Context/savedContaxt.jsx";
 const Users = () => {
   const { usersInfo, setUsersInfo } = React.useContext(usersContext);
 
-  const [id, setId] = React.useState("");
+  const {Id, setId}= React.useContext(SavedContext);
   const ShowHandler = (userId) => {
-    setId(userId);
+    setId(userId)
   };
 
   /*----Delete Alert Handler----*/
@@ -54,14 +54,7 @@ const Users = () => {
 
   return (
     <>
-      <section className="text-[13px] sm:text-[16px] w-fit">
-        <div className="text-white">
-          <div className="filter flex justify-between p-0 sm:px-4 pt-3 items-center">
-            <p className="p-1">
-              Sort by:{" "}
-              <span className="bg-gray-600 rounded p-0 md:px-1">Date</span>
-            </p>
-          </div>
+      <section className="text-[13px] sm:text-[16px] w-fit text-white">
           <div className="users-container py-2 h-[90vh] overflow-y-auto w-fit">
             {usersInfo.map((data) => {
               return (
@@ -117,7 +110,6 @@ const Users = () => {
               );
             })}
           </div>
-        </div>
       </section>
       <Dialog open={chatOpen} handler={handleOpen} className="chat-page w-fit mx-auto mt-4">
         <Message />

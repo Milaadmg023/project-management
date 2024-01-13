@@ -4,8 +4,10 @@ import tasksContext from './../Context/tasksContext';
 import { FaBookmark } from "react-icons/fa";
 import SavedContext from "../Context/savedContaxt";
 
-const Tasks = (props) => {
-  const filteredMembers = membersData.filter((data) => data.id === props.id);
+const Tasks = () => {
+  const {Id} = React.useContext(SavedContext)
+  console.log(Id);
+  const filteredMembers = membersData.filter((data) => data.id === Id);
   const [select, setSelect] = React.useState("");
   const { usersData, setUsersData } = React.useContext(tasksContext);
   const allTasks = usersData.usersTasks;
