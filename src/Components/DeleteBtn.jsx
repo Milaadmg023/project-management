@@ -1,6 +1,6 @@
 import React from "react";
 import "./users-style.css"
-import modalsContext from "../../../Context/modalsContext";
+import modalsContext from "../Context/modalsContext";
 
 const DeleteBtn = () => {
 

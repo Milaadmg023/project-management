@@ -3,9 +3,6 @@ body {
 }
 
 /*----------profile------------*/
-#profile {
-    background-color: #BE9AA0B5;
-}
 
 /*-----scroll-style------*/
 
@@ -50,18 +47,15 @@ body {
     background-size: cover;
 }
 
-.commands-container .active {
-    background-color: #bf9fa4b5;
-}
 .project-container button{
     background-color: #bf9fa4b5;
 }
 /*----------users---------------*/
 
-#users {
-    background-color: #393244;
-}
-
 #users .users {
     background-color: #403E51;
+}
+
+.commands-container div:focus , .commands-container div:hover {
+  background: #bf9fa4b5;
 }

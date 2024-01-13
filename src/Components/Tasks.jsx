@@ -1,8 +1,8 @@
 import React from "react";
-import membersData from "../../membersData";
-import tasksContext from './../../Context/tasksContext';
+import membersData from "../membersData";
+import tasksContext from './../Context/tasksContext';
 import { FaBookmark } from "react-icons/fa";
-import SavedContext from "../../Context/savedContaxt";
+import SavedContext from "../Context/savedContaxt";
 
 const Tasks = (props) => {
   const filteredMembers = membersData.filter((data) => data.id === props.id);
@@ -27,11 +27,10 @@ const Tasks = (props) => {
   const {savedTasks , setSavedTasks} = React.useContext(SavedContext)
   const BookmarkHandler = (user) => {
     setSavedTasks((prevBookmarks) => [...prevBookmarks, user]);
-    console.log(savedTasks);
   };
 
   return (
-    <div id="tasks" className="bg-[#2A4C75]">
+    <div className="bg-[#2A4C75] w-[80vw]">
       {filteredMembers.map((member) => {
         return (
           <div className="grid-rows-2 text-white">

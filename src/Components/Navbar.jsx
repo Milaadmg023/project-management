@@ -1,14 +1,15 @@
 import React from "react";
-import { HiOutlineMail } from "react-icons/hi";
-import membersData from "../../membersData";
+
+import membersData from "../membersData";
 import { MdAddBox } from "react-icons/md";
-import { FaBookmark } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
 import { CgMenuLeftAlt, CgProfile } from "react-icons/cg";
 import { Dialog } from "@material-tailwind/react";
 import { FaX } from "react-icons/fa6";
+import { IoHomeOutline , IoChatbubbleOutline , IoSettingsOutline , IoBookmarkOutline } from "react-icons/io5";
 
-const Profile = () => {
+const Navbar = () => {
   const [menuStatus, setMenuStatus] = React.useState(false);
 
   const menuHandler = () => setMenuStatus(!menuStatus);
@@ -28,21 +29,38 @@ const Profile = () => {
           <div className="commands-container">
             <Link to="/">
               <div
-                className="flex flex-col cursor-pointer rounded-[0.5rem] justify-center text-center active"
+                className="flex flex-col cursor-pointer rounded-[0.5rem] justify-center text-center"
                 id="inbox"
               >
-                <HiOutlineMail size={25} className="mx-auto" />{" "}
-                <span className="hidden md:block">Inbox</span>
+                <IoHomeOutline size={25} className="mx-auto"/>
+                <span className="hidden md:block">Home</span>
               </div>
             </Link>
-
             <Link to="/bookmark">
               <div
                 className="flex flex-col mt-2 p-1 cursor-pointer rounded-[0.5rem]"
                 id="bookmark"
               >
-                <FaBookmark size={22} className="mx-auto" />{" "}
+                <IoBookmarkOutline size={22} className="mx-auto" />{" "}
                 <span className="hidden md:block">Bookmark</span>
+              </div>
+            </Link>
+            <Link to="/chat">
+              <div
+                className="flex flex-col mt-2 p-1 cursor-pointer rounded-[0.5rem]"
+                id="chat"
+              >
+                <IoChatbubbleOutline size={22} className="mx-auto" />
+                <span className="hidden md:block text-center">Chat</span>
+              </div>
+            </Link>
+            <Link to="/setting">
+              <div
+                className="flex flex-col mt-2 p-1 cursor-pointer rounded-[0.5rem]"
+                id="setting"
+              >
+                <IoSettingsOutline size={22} className="mx-auto" />
+                <span className="hidden md:block text-center">Setting</span>
               </div>
             </Link>
           </div>
@@ -106,7 +124,7 @@ const Profile = () => {
         </Dialog>
       </div>
       {/* Mobile Menu */}
-      <div className="fixed bottom-0 right-0 left-0 z-10 bg-gray-50">
+      <div className="fixed bottom-0 right-0 left-0 z-10 bg-gray-50 block lg:hidden">
         <div className="flex">
           <div className="border border-gray-300 py-3 flex gap-1 shadow-xl rounded-md justify-around w-[100vw]">
             <div className="group relative px-4 cursor-pointer">
@@ -215,4 +233,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Navbar;

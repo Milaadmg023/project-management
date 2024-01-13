@@ -7,7 +7,7 @@ function Message() {
   };
   return (
     <>
-      <div class="bg-gray-100 h-[90vh] flex flex-col max-w-lg mx-auto">
+      <div class="bg-gray-100 h-[90vh] flex flex-col max-w-lg">
         <div class="bg-blue-500 p-4 text-white flex justify-between items-center">
           <button id="login" class="hover:bg-blue-400 rounded-md p-1">
             <svg

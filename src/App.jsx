@@ -1,10 +1,15 @@
 import React from "react";
 import "./App.css";
-import MainPage from "./Pages/MainPage";
 import tasksContext from "./Context/tasksContext";
 import modalsContext from "./Context/modalsContext";
 import usersContext from "./Context/usersContext";
 import SavedContext from "./Context/savedContaxt";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Components/Navbar";
+import Home from './Pages/Home/Home';
+import Bookmark from './Pages/Bookmark/Bookmark';
+import Chat from './Pages/Chat/Chat'
+import Setting from "./Pages/Setting/Setting";
 
 const App = () => {
   const [modalStatus, setModalStatus] = React.useState(false);
@@ -87,14 +92,30 @@ const App = () => {
     },
   ]);
 
-  const [bookmarks , setBookmarks] = React.useState([])
-  const [savedTasks , setSavedTasks] = React.useState([])
+  const [bookmarks, setBookmarks] = React.useState([]);
+  const [savedTasks, setSavedTasks] = React.useState([]);
   return (
     <modalsContext.Provider value={{ modalStatus, setModalStatus }}>
       <tasksContext.Provider value={{ usersData, setUsersData }}>
         <usersContext.Provider value={{ usersInfo, setUsersInfo }}>
-          <SavedContext.Provider value={{bookmarks , setBookmarks , savedTasks , setSavedTasks}}>
-            <MainPage />
+          <SavedContext.Provider
+            value={{ bookmarks, setBookmarks, savedTasks, setSavedTasks }}
+          >
+            <Router>
+              <div id="main-page" className="flex flex-row h-[100vh]">
+                <div className="overflow-y-auto overflow-x-hidden w-auto bg-[#BE9AA0B5]">
+                  <Navbar />
+                </div>
+                <div className="flex min-w-[82%] w-[100%] bg-[#393244]">
+                  <Routes>
+                    <Route path="/" element={<Home/>}/>
+                    <Route path="/bookmark" element={<Bookmark/>}/>
+                    <Route path="/chat" element={<Chat/>}/>
+                    <Route path="/setting" element={<Setting/>}/>
+                  </Routes>
+                </div>
+              </div>
+            </Router>
           </SavedContext.Provider>
         </usersContext.Provider>
       </tasksContext.Provider>
