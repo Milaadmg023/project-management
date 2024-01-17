@@ -1,7 +1,7 @@
 import React from "react";
 import { IoIosGitNetwork } from "react-icons/io";
 import { FaX } from "react-icons/fa6";
-import SavedContext from "../../../Context/savedContaxt";
+import SavedContext from "../Context/savedContaxt";
 
 function SavedUser(user) {
   const {bookmarks , setBookmarks} = React.useContext(SavedContext)

@@ -1,15 +1,15 @@
 import React from "react";
-import "../.././App.css";
+import "../App.css";
 import { IoFilter } from "react-icons/io5";
 import {
   Button,
   ButtonGroup
 } from "@material-tailwind/react";
-import SavedUser from "./Users/SavedUser";
-import SavedTask from "./Users/SavedTask";
-import SavedContext from "../../Context/savedContaxt";
+import SavedUser from "./SavedUser";
+import SavedTask from "./SavedTask";
+import SavedContext from "../Context/savedContaxt";
 
-const Bookmark = () => {
+const BookmarkPage = () => {
 
   const {bookmarks , setBookmarks} = React.useContext(SavedContext)
   const uniqueUsers = bookmarks.filter((value, index, self) => {
@@ -106,4 +106,4 @@ const Bookmark = () => {
   );
 };
 
-export default Bookmark;
+export default BookmarkPage;

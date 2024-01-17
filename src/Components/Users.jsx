@@ -7,7 +7,7 @@ import {
   FaCommentAlt,
   FaCloudDownloadAlt,
 } from "react-icons/fa";
-import "./users-style.css";
+import "../App.css";
 import Message from "./Message";
 import DeleteBtn from "./DeleteBtn.jsx";
 import modalsContext from "../Context/modalsContext.jsx";
@@ -22,35 +22,11 @@ const Users = () => {
     setId(userId)
   };
 
-  /*----Delete Alert Handler----*/
-
-  const { modalStatus, setModalStatus } = React.useContext(modalsContext);
-  const deleteHandler = () => {
-    setModalStatus(!modalStatus);
-  };
-
-  /*----Bookmark Alert Handler----*/
-
-  const [saveAlert, setSaveAlert] = React.useState(false);
   const { bookmarks, setBookmarks } = React.useContext(SavedContext);
   const BookmarkHandler = (user) => {
-    setSaveAlert(!saveAlert);
     setBookmarks((prevBookmarks) => [...prevBookmarks, user]);
-    console.log(bookmarks);
   };
 
-  const closeBookmark = () => {
-    setSaveAlert(!saveAlert);
-  };
-
-  /*----Chat Modal Handler----*/
-
-  const [chatOpen, setChatOpen] = React.useState(false);
-  const handleOpen = () => {
-    setChatOpen(!chatOpen);
-  };
-
-  /*----menu darwer----*/
 
   return (
     <>
@@ -79,54 +55,11 @@ const Users = () => {
                       </h3>
                     </div>
                   </div>
-                  <div
-                    id="user-commands"
-                    className="flex bg-white p-1 gap-1 items-center rounded justify-center h-fit lg:grid lg:w-fit"
-                  >
-                    <FaTrash
-                      size={15}
-                      className="text-gray-800 cursor-pointer"
-                      onClick={() => deleteHandler(data)}
-                    />
-
-                    <FaCommentAlt
-                      onClick={handleOpen}
-                      variant="gradient"
-                      size={15}
-                      className="text-gray-800 cursor-pointer"
-                    />
-
-                    <FaCloudDownloadAlt
-                      size={15}
-                      className="text-gray-800 cursor-pointer"
-                    />
-                    <FaBookmark
-                      size={15}
-                      className="text-gray-800 cursor-pointer"
-                      onClick={() => BookmarkHandler(data)}
-                    />
-                  </div>
                 </div>
               );
             })}
           </div>
       </section>
-      <Dialog open={chatOpen} handler={handleOpen} className="chat-page w-fit mx-auto mt-4">
-        <Message />
-      </Dialog>
-      <Dialog open={modalStatus} handler={deleteHandler} className="w-fit mx-auto mt-4">
-        <DeleteBtn />
-      </Dialog>
-      <Dialog
-        open={saveAlert}
-        handler={closeBookmark}
-        className="mt-10 mx-auto p-1 w-fit border bg-gray-900 text-white h-fit"
-      >
-        <div className="flex justify-center gap-1 items-center">
-          Item Saved
-          <FaX size={20} onClick={closeBookmark} className="cursor-pointer" />
-        </div>
-      </Dialog>
     </>
   );
 };

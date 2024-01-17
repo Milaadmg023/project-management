@@ -1,14 +1,18 @@
-import React from 'react'
-import Users from './../../Components/Users';
-import Tasks from '../../Components/Tasks';
+import React from "react";
+import Users from "./../../Components/Users";
+import Tasks from "../../Components/Tasks";
 
 function Home() {
   return (
-    <>
-    <Users/>
-    <Tasks/>
-    </>
-  )
+    <section className="flex">
+      <div>
+        <Users />
+      </div>
+      <div>
+        <Tasks />
+      </div>
+    </section>
+  );
 }
 
-export default Home
+export default Home;

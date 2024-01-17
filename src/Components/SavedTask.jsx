@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaX } from "react-icons/fa6";
-import SavedContext from '../../../Context/savedContaxt';
+import SavedContext from '../Context/savedContaxt';
 
 function SavedTask(task) {
   const {savedTasks , setSavedTasks} = React.useContext(SavedContext)
